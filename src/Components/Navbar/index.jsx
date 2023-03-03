@@ -10,12 +10,11 @@ import Footer from "../Footer";
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
   return (
     <Container>
       <Wrapper>
         <Wrapper.Navbar>
-          <Wrapper.Logo src={logo} />
+          <Wrapper.Logo src={logo} onClick={() => navigate("/")} />
           <Wrapper.Links>
             <Wrapper.Link
               className={location.pathname === "/" ? "active" : ""}

@@ -1,5 +1,7 @@
 import React from "react";
 import ProductCard from "./ProductCard";
+import RelatedProducts from "./RelatedProducts";
+import Reviews from "./Reviews";
 import { Wrapper } from "./style";
 
 const ShopComponent = () => {
@@ -7,6 +9,8 @@ const ShopComponent = () => {
     <Wrapper>
       <Wrapper.Title>Home/Shop</Wrapper.Title>
       <ProductCard />
+      <Reviews />
+      <RelatedProducts />
     </Wrapper>
   );
 };

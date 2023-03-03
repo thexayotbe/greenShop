@@ -30,20 +30,22 @@ const ShopSection = ({ stateData }) => {
   }, [stateData]);
   return (
     <Wrapper>
-      <Wrapper.Products>
-        {stateData.map((value) => {
-          return (
-            value.id >= startPage &&
-            value.id <= endPage && (
-              <ShopCard
-                key={value.id}
-                {...value}
-                familyName={filterData.familyName}
-              />
-            )
-          );
-        })}
-      </Wrapper.Products>
+      <Wrapper.ContainerProduct>
+        <Wrapper.Products>
+          {stateData.map((value, index) => {
+            return (
+              index >= startPage &&
+              index <= endPage && (
+                <ShopCard
+                  key={value.id}
+                  {...value}
+                  familyName={filterData.familyName}
+                />
+              )
+            );
+          })}
+        </Wrapper.Products>
+      </Wrapper.ContainerProduct>
       <Wrapper.Pagination>
         <Pagination
           current={currentPage}

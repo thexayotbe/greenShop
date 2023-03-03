@@ -2,75 +2,40 @@ import { Wrapper } from "./style";
 import { data } from "../../mock/data";
 import Button from "../Generic/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedFamily, setRange } from "../../redux/shopDataSlice";
+import {
+  setSelectedFamily,
+  setRange,
+  sortType,
+  sortByPrice,
+} from "../../redux/shopDataSlice";
 import ShopSection from "../ShopSection";
-import { Dropdown, Space } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { Select } from "antd";
 import { useEffect, useState } from "react";
 import saleBanner from "../../assets/images/SaleBanner.png";
+
+const { Option } = Select;
 const ShopDashbord = () => {
   const dispatch = useDispatch();
   const familyNames = Object.keys(data);
   const { filterData, sortedData } = useSelector((state) => state.filterData);
   const [stateData, setStateData] = useState([...sortedData]);
   const dropDownChange = (e) => {
-    const copyData = [...sortedData];
-    selectHandler(e.target.innerText, "sortBy");
-    if (e.target.innerText === "Default sorting") {
-      setStateData([...sortedData]);
-    } else if (e.target.innerText === "Cheapest") {
-      setStateData(stateData.sort((a, b) => a.price - b.price));
-    } else if (e.target.innerText === "Most Expensive") {
-      setStateData(
-        stateData
-          .sort((a, b) => {
-            return a.price - b.price;
-          })
-          .reverse()
-      );
-    }
+    dispatch(sortByPrice(e));
   };
-  const items = [
-    {
-      key: "1",
-      label: (
-        <Wrapper.Label onClick={dropDownChange}>Default sorting</Wrapper.Label>
-      ),
-    },
-    {
-      key: "2",
-      label: <Wrapper.Label onClick={dropDownChange}>Cheapest</Wrapper.Label>,
-    },
-    {
-      key: "3",
-      label: (
-        <Wrapper.Label onClick={dropDownChange}>Most Expensive</Wrapper.Label>
-      ),
-    },
-  ];
-
   const selectHandler = (value, type) => {
     dispatch(setSelectedFamily({ type: type, value: value }));
   };
-
-  useEffect(() => setStateData(sortedData), [sortedData]);
   const filterRange = () => {
     dispatch(setRange(filterData.range));
   };
   const sortByType = (type) => {
     selectHandler(type, "sortType");
-    let copyData = [...sortedData];
-    if (type === "New Arrivals") {
-      setStateData(
-        copyData.sort((a, b) => a.date.getTime() - b.date.getTime())
-      );
-    } else if (type === "Sale") {
-      setStateData(copyData.sort((a, b) => a.sale - b.sale));
-    } else if (type === "All Plants") {
-      setStateData(copyData);
-    }
+    dispatch(sortType(type));
   };
   useEffect(() => filterRange(), [filterData.familyName]);
+  useEffect(() => {
+    setStateData(sortedData);
+  }, [sortedData]);
 
   return (
     <Wrapper>
@@ -157,16 +122,16 @@ const ShopDashbord = () => {
           <Wrapper.SortDefaultType>
             <Wrapper.TypeName>
               Sort by : {"   "}
-              <Dropdown
-                trigger={"click"}
-                menu={{
-                  items,
-                }}>
-                <Space>
-                  {filterData.sortBy}
-                  <DownOutlined />
-                </Space>
-              </Dropdown>
+              <Select
+                style={{ width: "200px", border: "none" }}
+                onChange={(e) => {
+                  dropDownChange(e);
+                }}
+                defaultValue={"default"}>
+                <Option value="default">Default</Option>
+                <Option value="most-expensive">Most expensive</Option>
+                <Option value="cheapest">Cheapest</Option>
+              </Select>
             </Wrapper.TypeName>
           </Wrapper.SortDefaultType>
         </Wrapper.ProductsSort>

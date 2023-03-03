@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Wrapper } from "./style";
 import { data } from "../../../mock/data";
@@ -7,9 +7,10 @@ import flower9 from "../../../assets/images/flower9.png";
 import flower3 from "../../../assets/images/flower3.png";
 import starFull from "../../../assets/icons/starFull.svg";
 import starEmpty from "../../../assets/icons/starEmpty.svg";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 const ProductCard = () => {
   const { familyName, productID } = useParams();
-  const product = data[familyName][productID - 1];
+  const [product, setProduct] = useState(data[familyName][productID - 1]);
   const [selectedProduct, setSelectedProduct] = useState({
     product,
     size: "S",
@@ -23,13 +24,34 @@ const ProductCard = () => {
     setActiveImg(img);
     setActiveImgNumber(number);
   };
+  useEffect(
+    () => setProduct(data[familyName][productID - 1]),
+    [familyName, productID]
+  );
   const changeProduct = (value, type) => {
     switch (type) {
       case "size":
         setSelectedProduct({ ...selectedProduct, size: value });
         break;
-      case "count":
-        selectedProduct({ ...selectedProduct, count: value });
+      case "countInc":
+        setSelectedProduct({
+          ...selectedProduct,
+          count: selectedProduct.count + 1,
+        });
+        break;
+      case "countDec":
+        if (selectedProduct.count > 0)
+          setSelectedProduct({
+            ...selectedProduct,
+            count: selectedProduct.count - 1,
+          });
+        break;
+      case "like":
+        setSelectedProduct({
+          ...selectedProduct,
+          favourite: !selectedProduct.favourite,
+        });
+        break;
     }
   };
   return (
@@ -99,13 +121,35 @@ const ProductCard = () => {
           </Wrapper.Size>
         </Wrapper.SizeSection>
         <Wrapper.Buttons>
-          <Wrapper.CountChangeBtn>-</Wrapper.CountChangeBtn>
-          <Wrapper.Count>{selectedProduct.count}</Wrapper.Count>
-          <Wrapper.CountChangeBtn>+</Wrapper.CountChangeBtn>
+          <Wrapper.CountSection>
+            <Wrapper.CountChangeBtn
+              onClick={() => changeProduct("_", "countDec")}>
+              -
+            </Wrapper.CountChangeBtn>
+            <Wrapper.Count>{selectedProduct.count}</Wrapper.Count>
+            <Wrapper.CountChangeBtn
+              onClick={() => changeProduct("_", "countInc")}>
+              +
+            </Wrapper.CountChangeBtn>
+          </Wrapper.CountSection>
           <Wrapper.ActionButton>Buy Now</Wrapper.ActionButton>
-          <Wrapper.ActionButton>Add to cart</Wrapper.ActionButton>
-          <Wrapper.Like></Wrapper.Like>
+          <Wrapper.ActionButton cardBtn>Add to cart</Wrapper.ActionButton>
+          <Wrapper.Like onClick={() => changeProduct("_", "like")}>
+            {selectedProduct.favourite ? <AiFillHeart /> : <AiOutlineHeart />}
+          </Wrapper.Like>
         </Wrapper.Buttons>
+        <Wrapper.ExtraInfo>
+          <Wrapper.ExtraInfoTitle>SKU-ID:</Wrapper.ExtraInfoTitle>
+          <Wrapper.ExtraInfoText>{product.id}</Wrapper.ExtraInfoText>
+        </Wrapper.ExtraInfo>
+        <Wrapper.ExtraInfo>
+          <Wrapper.ExtraInfoTitle>Categories:</Wrapper.ExtraInfoTitle>
+          <Wrapper.ExtraInfoText>{familyName}</Wrapper.ExtraInfoText>
+        </Wrapper.ExtraInfo>
+        <Wrapper.ExtraInfo>
+          <Wrapper.ExtraInfoTitle>Tags:</Wrapper.ExtraInfoTitle>
+          <Wrapper.ExtraInfoText>Home, Garden, Plants</Wrapper.ExtraInfoText>
+        </Wrapper.ExtraInfo>
       </Wrapper.InfoSection>
     </Wrapper>
   );

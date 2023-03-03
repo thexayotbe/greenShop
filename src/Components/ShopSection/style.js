@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div``;
+Wrapper.ContainerProduct = styled.div`
+  height: 1200px;
+`;
 Wrapper.Products = styled.div`
   display: flex;
   flex-wrap: wrap;
   column-gap: 32px;
-  row-gap: 100px;
-  height: 1200px;
+  gap: 20px;
+  max-height: 1200px;
+  height: auto;
 `;
 Wrapper.Pagination = styled.div`
   float: right;

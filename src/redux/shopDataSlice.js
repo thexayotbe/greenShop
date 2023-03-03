@@ -11,6 +11,7 @@ const filterData = createSlice({
       sortBy: "Default sorting",
     },
     sortedData: data["House Plants"],
+    copyData: data["House Plants"],
   },
   reducers: {
     setSelectedFamily(state, action) {
@@ -57,8 +58,43 @@ const filterData = createSlice({
           value.price >= action.payload[0] && value.price <= action.payload[1]
       );
     },
+
+    sortType(state, action) {
+      switch (action.payload) {
+        case "New Arrivals":
+          state.sortedData = [...state.sortedData].sort(
+            (a, b) => a.date.getTime() - b.date.getTime()
+          );
+          break;
+        case "Sale":
+          state.sortedData = [...state.sortedData].sort(
+            (a, b) => a.sale - b.sale
+          );
+          break;
+        default:
+          state.sortedData = [...state.copyData];
+      }
+    },
+    sortByPrice(state, action) {
+      switch (action.payload) {
+        case "default":
+          state.sortedData = [...state.copyData];
+          break;
+        case "cheapest":
+          state.sortedData = [...state.sortedData].sort(
+            (a, b) => a.price - b.price
+          );
+          break;
+        case "most-expensive":
+          state.sortedData = [...state.sortedData]
+            .sort((a, b) => a.price - b.price)
+            .reverse();
+          break;
+      }
+    },
   },
 });
 
 export default filterData.reducer;
-export const { setSelectedFamily, setRange } = filterData.actions;
+export const { setSelectedFamily, setRange, sortType, sortByPrice } =
+  filterData.actions;

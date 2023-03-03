@@ -16,6 +16,12 @@ const Wrapper = styled.div`
     color: #fff;
     border-radius: 0 15px 15px 0;
   }
+  .ant-select {
+    border: none;
+  }
+  .ant-select-selection-item {
+    border: none;
+  }
 `;
 Wrapper.FilterSide = styled.div`
   width: 310px;
@@ -45,7 +51,7 @@ Wrapper.FilterName = styled.div`
   font-size: 15px;
   line-height: 40px;
   display: flex;
-  justify-content: "space-between";
+  justify-content: space-between;
 
   color: #3d3d3d;
   cursor: pointer;
