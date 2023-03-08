@@ -8,9 +8,14 @@ import flower3 from "../../../assets/images/flower3.png";
 import starFull from "../../../assets/icons/starFull.svg";
 import starEmpty from "../../../assets/icons/starEmpty.svg";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { setOrderedProducts } from "../../../redux/orderDataSlice";
+
 const ProductCard = () => {
   const { familyName, productID } = useParams();
+  const { orderData } = useSelector((state) => state.orderData);
   const [product, setProduct] = useState(data[familyName][productID - 1]);
+  const dispatch = useDispatch();
   const [selectedProduct, setSelectedProduct] = useState({
     product,
     size: "S",
@@ -23,6 +28,10 @@ const ProductCard = () => {
   const changeImg = (img, number) => {
     setActiveImg(img);
     setActiveImgNumber(number);
+  };
+  const addToCard = () => {
+    let result = orderData.some((value) => value.id === product.id);
+    if (!result) dispatch(setOrderedProducts(product));
   };
   useEffect(
     () => setProduct(data[familyName][productID - 1]),
@@ -133,7 +142,9 @@ const ProductCard = () => {
             </Wrapper.CountChangeBtn>
           </Wrapper.CountSection>
           <Wrapper.ActionButton>Buy Now</Wrapper.ActionButton>
-          <Wrapper.ActionButton cardBtn>Add to cart</Wrapper.ActionButton>
+          <Wrapper.ActionButton cardBtn onClick={() => addToCard()}>
+            Add to cart
+          </Wrapper.ActionButton>
           <Wrapper.Like onClick={() => changeProduct("_", "like")}>
             {selectedProduct.favourite ? <AiFillHeart /> : <AiOutlineHeart />}
           </Wrapper.Like>

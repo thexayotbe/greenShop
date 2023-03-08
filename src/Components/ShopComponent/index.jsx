@@ -1,4 +1,4 @@
-import React from "react";
+import { LocationName } from "../Generic/styles";
 import ProductCard from "./ProductCard";
 import RelatedProducts from "./RelatedProducts";
 import Reviews from "./Reviews";
@@ -7,10 +7,12 @@ import { Wrapper } from "./style";
 const ShopComponent = () => {
   return (
     <Wrapper>
-      <Wrapper.Title>Home/Shop</Wrapper.Title>
+      <LocationName>
+        <LocationName.Home>Home</LocationName.Home>/ Shop
+      </LocationName>
       <ProductCard />
       <Reviews />
-      <RelatedProducts />
+      <RelatedProducts title={"Releted Products"} />
     </Wrapper>
   );
 };

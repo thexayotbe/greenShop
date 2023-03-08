@@ -12,6 +12,7 @@ const filterData = createSlice({
     },
     sortedData: data["House Plants"],
     copyData: data["House Plants"],
+    orderedProducts: [],
   },
   reducers: {
     setSelectedFamily(state, action) {
@@ -62,9 +63,9 @@ const filterData = createSlice({
     sortType(state, action) {
       switch (action.payload) {
         case "New Arrivals":
-          state.sortedData = [...state.sortedData].sort(
-            (a, b) => a.date.getTime() - b.date.getTime()
-          );
+          state.sortedData = [...state.sortedData]
+            .sort((a, b) => a.date.getTime() - b.date.getTime())
+            .reverse();
           break;
         case "Sale":
           state.sortedData = [...state.sortedData].sort(

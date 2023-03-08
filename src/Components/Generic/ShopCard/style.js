@@ -73,4 +73,13 @@ Wrapper.Price = styled.p`
   color: #46a358;
   margin-top: 6px;
 `;
+Wrapper.DateText = styled.p`
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: #3d3d3d;
+`;
 export { Wrapper };

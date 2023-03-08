@@ -3,8 +3,6 @@ import { useSelector } from "react-redux";
 import { Wrapper } from "./style";
 import ShopCard from "../Generic/ShopCard";
 import { Pagination } from "antd";
-import { data } from "../../mock/data";
-
 const ShopSection = ({ stateData }) => {
   const { filterData } = useSelector((state) => state.filterData);
   const [startPage, setStartPage] = useState(1);

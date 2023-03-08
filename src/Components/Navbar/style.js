@@ -8,6 +8,9 @@ const Wrapper = styled.div`
     font-weight: 900;
     border-bottom: 3px solid #46a358;
   }
+  .ant-badge .ant-badge-count {
+    background: #46a358;
+  }
 `;
 
 Wrapper.Navbar = styled.div`
@@ -45,7 +48,9 @@ Wrapper.Btns = styled.div`
   align-items: center;
   gap: 30px;
 `;
-Wrapper.Icon = styled.img``;
+Wrapper.Icon = styled.img`
+  cursor: pointer;
+`;
 Wrapper.LoginBtn = styled.button`
   width: 100px;
   height: 35px;
@@ -58,5 +63,6 @@ Wrapper.LoginBtn = styled.button`
   gap: 10px;
   color: #fff;
   font-weight: 500;
+  cursor: pointer;
 `;
 export { Wrapper };

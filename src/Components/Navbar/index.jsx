@@ -7,9 +7,12 @@ import search from "../../assets/icons/search.svg";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Container } from "../Generic/styles";
 import Footer from "../Footer";
+import { Badge } from "antd";
+import { useSelector } from "react-redux";
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { orderData } = useSelector((state) => state.orderData);
   return (
     <Container>
       <Wrapper>
@@ -41,7 +44,9 @@ const Navbar = () => {
           </Wrapper.Links>
           <Wrapper.Btns>
             <Wrapper.Icon src={search} />
-            <Wrapper.Icon src={shop} />
+            <Badge count={orderData.length}>
+              <Wrapper.Icon src={shop} onClick={() => navigate("/shop-card")} />
+            </Badge>
             <Wrapper.LoginBtn>
               <Wrapper.Icon src={login} /> Login
             </Wrapper.LoginBtn>

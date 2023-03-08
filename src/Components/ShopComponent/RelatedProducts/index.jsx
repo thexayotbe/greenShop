@@ -8,13 +8,12 @@ import "swiper/css/pagination";
 import ShopCard from "../../Generic/ShopCard";
 import { useParams } from "react-router-dom";
 
-const RelatedProducts = () => {
+const RelatedProducts = ({ title }) => {
   const { sortedData } = useSelector((state) => state.filterData);
   const { familyName } = useParams();
-  console.log(familyName);
   return (
     <Wrapper>
-      <Wrapper.Title>Releted Products</Wrapper.Title>
+      <Wrapper.Title>{title}</Wrapper.Title>
       <Wrapper.Slider>
         <Swiper
           style={{ height: "400px", display: "flex", gap: "30px " }}
