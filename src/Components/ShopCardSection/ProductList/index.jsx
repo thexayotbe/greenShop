@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Wrapper } from "./style";
 import deleteIcon from "../../../assets/icons/delete.svg";
-const ProductList = ({ amount, changeAmount }) => {
+const ProductList = ({ amount, changeAmount, deleteHandler }) => {
   const { orderData } = useSelector((state) => state.orderData);
   return (
     <Wrapper>
@@ -52,7 +52,11 @@ const ProductList = ({ amount, changeAmount }) => {
                   </Wrapper.Price>
                 </Wrapper.Td>
                 <Wrapper.Td>
-                  <Wrapper.Icon src={deleteIcon} alt={"Delete"} />
+                  <Wrapper.Icon
+                    src={deleteIcon}
+                    alt={"Delete"}
+                    onClick={() => deleteHandler(value, index)}
+                  />
                 </Wrapper.Td>
               </Wrapper.Tr>
             );

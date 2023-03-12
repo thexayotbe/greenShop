@@ -52,7 +52,6 @@ Wrapper.FilterName = styled.div`
   line-height: 40px;
   display: flex;
   justify-content: space-between;
-
   color: #3d3d3d;
   cursor: pointer;
   transition: all 0.3s;
@@ -63,6 +62,18 @@ Wrapper.FilterName = styled.div`
     color: #fff;
     border-radius: 0 15px 15px 0;
   }
+`;
+Wrapper.Price = styled.h3`
+  padding-right: 14px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 40px;
+  display: flex;
+  justify-content: space-between;
+  color: #3d3d3d;
+  cursor: pointer;
+  margin-top: 5px;
 `;
 Wrapper.TypeName = styled.div`
   font-style: normal;

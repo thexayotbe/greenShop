@@ -4,12 +4,19 @@ import { LocationName } from "../Generic/styles";
 import { Wrapper } from "./style";
 import RelatedProducts from "../ShopComponent/RelatedProducts";
 import ProductList from "./ProductList";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CardTotal from "./CardTotal";
+import Button from "../Generic/Button";
+import { useNavigate } from "react-router-dom";
 import { deleteProduct } from "../../redux/orderDataSlice";
+
 const ShopCard = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { orderData } = useSelector((state) => state.orderData);
-  const [amount, setAmount] = useState(orderData.map((value) => 1));
+  const [amount, setAmount] = useState(
+    orderData.map((value) => (value.count ? value.count : 1))
+  );
   const [total, setTotal] = useState([1, 2, 3]);
   const changeAmount = (type, order) => {
     if (type === "inc")
@@ -26,6 +33,10 @@ const ShopCard = () => {
       setTotal(orderData.map((value, index) => value.price * amount[index])),
     [amount]
   );
+  const deleteHandler = (product, order) => {
+    dispatch(deleteProduct(product.id));
+    setAmount(amount.filter((value, index) => index !== order));
+  };
   return (
     <Wrapper>
       <LocationName>
@@ -34,7 +45,11 @@ const ShopCard = () => {
       {orderData.length > 0 ? (
         <Wrapper.OrderSection>
           <Wrapper.Products>
-            <ProductList amount={amount} changeAmount={changeAmount} />
+            <ProductList
+              amount={amount}
+              changeAmount={changeAmount}
+              deleteHandler={deleteHandler}
+            />
           </Wrapper.Products>
           <Wrapper.CardTotals>
             <CardTotal total={total} />
@@ -42,7 +57,10 @@ const ShopCard = () => {
         </Wrapper.OrderSection>
       ) : (
         <Wrapper.CardEmpty>
-          <ShopOutlined className="icon" /> You have not made any shopping
+          <Wrapper.TextSide>
+            <ShopOutlined className="icon" /> You have not made any shopping
+          </Wrapper.TextSide>
+          <Button onClickFunc={() => navigate("/")}>Go to Shop</Button>
         </Wrapper.CardEmpty>
       )}
       <RelatedProducts title={"You may be interested in"} />

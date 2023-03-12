@@ -68,12 +68,12 @@ const ShopDashbord = () => {
             style={{ color: "#46A358" }}
             onChange={(e) => selectHandler(e, "range")}
           />
-          <Wrapper.FilterName noSpace>
+          <Wrapper.Price noSpace>
             Price:{" "}
             <Wrapper.NameAmount className={"selected"}>
               `${filterData.range[0]}-${filterData.range[1]}`
             </Wrapper.NameAmount>
-          </Wrapper.FilterName>
+          </Wrapper.Price>
           <Button
             onClickFunc={filterRange}
             widthBtn={"90px"}

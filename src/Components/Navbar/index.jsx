@@ -8,8 +8,10 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Container } from "../Generic/styles";
 import Footer from "../Footer";
 import { Badge } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { switchAuthModalVisibility } from "../../redux/modalSlice";
 const Navbar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const { orderData } = useSelector((state) => state.orderData);
@@ -47,7 +49,8 @@ const Navbar = () => {
             <Badge count={orderData.length}>
               <Wrapper.Icon src={shop} onClick={() => navigate("/shop-card")} />
             </Badge>
-            <Wrapper.LoginBtn>
+            <Wrapper.LoginBtn
+              onClick={() => dispatch(switchAuthModalVisibility())}>
               <Wrapper.Icon src={login} /> Login
             </Wrapper.LoginBtn>
           </Wrapper.Btns>

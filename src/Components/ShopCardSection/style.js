@@ -12,16 +12,19 @@ Wrapper.Products = styled.div`
 Wrapper.CardTotals = styled.div`
   width: 328px;
 `;
+Wrapper.TextSide = styled.div``;
 Wrapper.CardEmpty = styled.div`
   font-size: 20px;
   gap: 30px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 200px;
   color: #46a358;
   .icon {
     font-size: 40px;
   }
 `;
+
 export { Wrapper };

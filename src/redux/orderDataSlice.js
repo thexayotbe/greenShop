@@ -4,6 +4,7 @@ const orderData = createSlice({
   name: "orderData",
   initialState: {
     orderData: [],
+    productCount: [],
   },
   reducers: {
     setOrderedProducts(state, action) {
@@ -15,7 +16,11 @@ const orderData = createSlice({
         (value) => value.id !== action.payload
       );
     },
+    setProductCount(state, action) {
+      state.orderData = [...state.orderData, action.payload];
+    },
   },
 });
 export default orderData.reducer;
-export const { setOrderedProducts, deleteProduct } = orderData.actions;
+export const { setOrderedProducts, deleteProduct, setProductCount } =
+  orderData.actions;

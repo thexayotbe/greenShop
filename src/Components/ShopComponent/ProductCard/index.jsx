@@ -17,11 +17,12 @@ const ProductCard = () => {
   const [product, setProduct] = useState(data[familyName][productID - 1]);
   const dispatch = useDispatch();
   const [selectedProduct, setSelectedProduct] = useState({
-    product,
+    ...product,
     size: "S",
-    count: 0,
+    count: 1,
     favourite: false,
   });
+  console.log(selectedProduct);
   const [activeImg, setActiveImg] = useState(product.img);
   const [activeImgNumber, setActiveImgNumber] = useState(0);
   const images = [product.img, flower8, flower9, flower3];
@@ -30,8 +31,8 @@ const ProductCard = () => {
     setActiveImgNumber(number);
   };
   const addToCard = () => {
-    let result = orderData.some((value) => value.id === product.id);
-    if (!result) dispatch(setOrderedProducts(product));
+    let result = orderData.some((value) => value.id === selectedProduct.id);
+    if (!result) dispatch(setOrderedProducts(selectedProduct));
   };
   useEffect(
     () => setProduct(data[familyName][productID - 1]),
@@ -49,7 +50,7 @@ const ProductCard = () => {
         });
         break;
       case "countDec":
-        if (selectedProduct.count > 0)
+        if (selectedProduct.count > 1)
           setSelectedProduct({
             ...selectedProduct,
             count: selectedProduct.count - 1,

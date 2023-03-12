@@ -100,5 +100,7 @@ Wrapper.Button = styled.button`
   border: none;
   cursor: pointer;
 `;
-Wrapper.Icon = styled.img``;
+Wrapper.Icon = styled.img`
+  cursor: pointer;
+`;
 export { Wrapper };
