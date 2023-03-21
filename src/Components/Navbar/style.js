@@ -65,4 +65,13 @@ Wrapper.LoginBtn = styled.button`
   font-weight: 500;
   cursor: pointer;
 `;
+Wrapper.ProfileBtn = styled.button`
+  width: 34px;
+  height: 34px;
+  background: #46a358;
+  border-radius: 50%;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+`;
 export { Wrapper };

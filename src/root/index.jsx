@@ -1,12 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "../Components/Navbar";
-import ShopCard from "../Components/ShopCardSection";
 import { Blog } from "../pages/Blog";
-import Home from "../pages/Home";
 import { PlantCare } from "../pages/PlantCare";
 import { Shop } from "../pages/Shop";
+import Navbar from "../Components/Navbar";
+import Home from "../pages/Home";
+import ShopCard from "../Components/ShopCardSection";
 import ShopComponent from "../Components/ShopComponent";
+import Checkout from "../Components/Checkout";
 const Root = () => {
   return (
     <>
@@ -18,9 +19,10 @@ const Root = () => {
             path="/shop/:familyName/:productID"
             element={<ShopComponent />}
           />
+          <Route path="/shop/checkout" element={<Checkout />} />
+          <Route path="/shop-card" element={<ShopCard />} />
           <Route path="/plant-care" element={<PlantCare />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/shop-card" element={<ShopCard />} />
         </Route>
       </Routes>
     </>

@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   width: 258px;
   height: 340px;
   position: relative;
+  cursor: pointer;
 `;
 Wrapper.ImgSide = styled.div`
   width: 258px;

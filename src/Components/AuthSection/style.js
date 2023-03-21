@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   position: fixed;
   top: 0;
   left: 0;
@@ -16,10 +16,11 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 40px;
 `;
 Wrapper.Modal = styled.div`
   width: 500px;
-  height: 656px;
+  min-height: 556px;
   background: #ffffff;
   display: flex;
   flex-direction: column;

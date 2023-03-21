@@ -8,30 +8,26 @@ import { useDispatch, useSelector } from "react-redux";
 import CardTotal from "./CardTotal";
 import Button from "../Generic/Button";
 import { useNavigate } from "react-router-dom";
-import { deleteProduct } from "../../redux/orderDataSlice";
+import { deleteProduct, setProductCount } from "../../redux/orderDataSlice";
 
 const ShopCard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { orderData } = useSelector((state) => state.orderData);
+  const { orderData, productCount } = useSelector((state) => state.orderData);
+  console.log(productCount);
   const [amount, setAmount] = useState(
     orderData.map((value) => (value.count ? value.count : 1))
   );
   const [total, setTotal] = useState([1, 2, 3]);
   const changeAmount = (type, order) => {
-    if (type === "inc")
-      setAmount(
-        amount.map((value, index) => (index === order ? value + 1 : value))
-      );
-    else if (type === "dec" && amount[order] > 1)
-      setAmount(
-        amount.map((value, index) => (index === order ? value - 1 : value))
-      );
+    dispatch(setProductCount({ type, order }));
   };
   useEffect(
     () =>
-      setTotal(orderData.map((value, index) => value.price * amount[index])),
-    [amount]
+      setTotal(
+        orderData.map((value, index) => value.price * productCount[index])
+      ),
+    [productCount]
   );
   const deleteHandler = (product, order) => {
     dispatch(deleteProduct(product.id));
@@ -46,7 +42,7 @@ const ShopCard = () => {
         <Wrapper.OrderSection>
           <Wrapper.Products>
             <ProductList
-              amount={amount}
+              amount={productCount}
               changeAmount={changeAmount}
               deleteHandler={deleteHandler}
             />

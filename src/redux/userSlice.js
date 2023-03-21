@@ -1,17 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { notification } from "antd";
+import modalSlice, { switchAuthModalVisibility } from "./modalSlice";
 
 const userData = createSlice({
   name: "userData",
   initialState: {
     users: [],
+    isAuthed: false,
+    currentUser: {},
   },
   reducers: {
     addUser(state, action) {
       state.users = [...state.users, action.payload];
+      let userData = JSON.parse(localStorage.getItem("userData")) || [];
+      userData.push(action.payload);
+      localStorage.setItem("userData", JSON.stringify(userData));
+      state.isAuthed = true;
     },
-    chaeckUser(state, action) {},
+    checkUser(state, { payload: { data, onSuccess } }) {
+      state.isAuthed = true;
+      state.currentUser = { ...data };
+    },
   },
 });
 
 export default userData.reducer;
-export const { addUser, chaeckUser } = userData.actions;
+export const { addUser, checkUser } = userData.actions;

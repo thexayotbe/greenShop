@@ -20,7 +20,7 @@ Wrapper.Title = styled.h3`
 Wrapper.Input = styled(Input)`
   width: 300px;
   height: 40px;
-  border: 1px solid #eaeaea;
+  border: 1px solid ${({ isError }) => (isError ? "red" : "#eaeaea")};
   border-radius: 5px;
   background-color: #fff;
   :hover {
@@ -30,7 +30,7 @@ Wrapper.Input = styled(Input)`
 Wrapper.InputPassword = styled(Input.Password)`
   width: 300px;
   height: 40px;
-  border: 1px solid #eaeaea;
+  border: 1px solid ${({ isError }) => (isError ? "red" : "#eaeaea")};
   border-radius: 5px;
   background-color: #fff;
   :hover {

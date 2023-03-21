@@ -86,6 +86,7 @@ Wrapper.ContinueText = styled.h3`
   color: #46a358;
   text-align: center;
   margin-top: 11px;
+  cursor: pointer;
 `;
 Wrapper.ShippingLink = styled.p`
   font-style: normal;

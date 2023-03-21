@@ -10,7 +10,9 @@ import Footer from "../Footer";
 import { Badge } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { switchAuthModalVisibility } from "../../redux/modalSlice";
+import { UserOutlined } from "@ant-design/icons";
 const Navbar = () => {
+  const { isAuthed } = useSelector((state) => state.userData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -49,10 +51,16 @@ const Navbar = () => {
             <Badge count={orderData.length}>
               <Wrapper.Icon src={shop} onClick={() => navigate("/shop-card")} />
             </Badge>
-            <Wrapper.LoginBtn
-              onClick={() => dispatch(switchAuthModalVisibility())}>
-              <Wrapper.Icon src={login} /> Login
-            </Wrapper.LoginBtn>
+            {isAuthed ? (
+              <Wrapper.ProfileBtn>
+                <UserOutlined />
+              </Wrapper.ProfileBtn>
+            ) : (
+              <Wrapper.LoginBtn
+                onClick={() => dispatch(switchAuthModalVisibility())}>
+                <Wrapper.Icon src={login} /> Login
+              </Wrapper.LoginBtn>
+            )}
           </Wrapper.Btns>
         </Wrapper.Navbar>
         <Outlet />

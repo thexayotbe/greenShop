@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Wrapper } from "./style";
 
 const CardTotal = ({ total }) => {
+  const navigate = useNavigate();
   const totalAmount = total?.reduce((a, b) => a + b);
   const [coupon, setCoupon] = useState(0);
   const [shipping, setShipping] = useState(16);
+
   return (
     <Wrapper>
       <Wrapper.Title>Cart Totals</Wrapper.Title>
@@ -32,8 +35,13 @@ const CardTotal = ({ total }) => {
           ${totalAmount + shipping + coupon}.00
         </Wrapper.Price>
       </Wrapper.PriceSection>
-      <Wrapper.Button>Proceed To Checkout</Wrapper.Button>
-      <Wrapper.ContinueText>Continue Shopping</Wrapper.ContinueText>
+      <Wrapper.Button
+        onClick={() => total.length > 0 && navigate("/shop/checkout")}>
+        Proceed To Checkout
+      </Wrapper.Button>
+      <Wrapper.ContinueText onClick={() => navigate("/")}>
+        Continue Shopping
+      </Wrapper.ContinueText>
     </Wrapper>
   );
 };
