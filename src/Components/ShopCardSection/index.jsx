@@ -14,7 +14,6 @@ const ShopCard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { orderData, productCount } = useSelector((state) => state.orderData);
-  console.log(productCount);
   const [amount, setAmount] = useState(
     orderData.map((value) => (value.count ? value.count : 1))
   );
@@ -30,7 +29,7 @@ const ShopCard = () => {
     [productCount]
   );
   const deleteHandler = (product, order) => {
-    dispatch(deleteProduct(product.id));
+    dispatch(deleteProduct({ type: product.id, countIndex: order }));
     setAmount(amount.filter((value, index) => index !== order));
   };
   return (

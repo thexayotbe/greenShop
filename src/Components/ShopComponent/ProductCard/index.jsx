@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Wrapper } from "./style";
 import { data } from "../../../mock/data";
 import flower8 from "../../../assets/images/flower8.png";
@@ -10,19 +10,21 @@ import starEmpty from "../../../assets/icons/starEmpty.svg";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { setOrderedProducts } from "../../../redux/orderDataSlice";
+import { switchAuthModalVisibility } from "../../../redux/modalSlice";
 
 const ProductCard = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { familyName, productID } = useParams();
   const { orderData } = useSelector((state) => state.orderData);
+  const { isAuthed } = useSelector((state) => state.userData);
   const [product, setProduct] = useState(data[familyName][productID - 1]);
-  const dispatch = useDispatch();
   const [selectedProduct, setSelectedProduct] = useState({
     ...product,
     size: "S",
     count: 1,
     favourite: false,
   });
-  console.log(selectedProduct);
   const [activeImg, setActiveImg] = useState(product.img);
   const [activeImgNumber, setActiveImgNumber] = useState(0);
   const images = [product.img, flower8, flower9, flower3];
@@ -63,6 +65,10 @@ const ProductCard = () => {
         });
         break;
     }
+  };
+  const buyNow = () => {
+    addToCard();
+    navigate("/shop-card");
   };
   return (
     <Wrapper>
@@ -142,8 +148,17 @@ const ProductCard = () => {
               +
             </Wrapper.CountChangeBtn>
           </Wrapper.CountSection>
-          <Wrapper.ActionButton>Buy Now</Wrapper.ActionButton>
-          <Wrapper.ActionButton cardBtn onClick={() => addToCard()}>
+          <Wrapper.ActionButton
+            onClick={() =>
+              isAuthed ? buyNow() : dispatch(switchAuthModalVisibility())
+            }>
+            Buy Now
+          </Wrapper.ActionButton>
+          <Wrapper.ActionButton
+            cardBtn
+            onClick={() =>
+              isAuthed ? addToCard() : dispatch(switchAuthModalVisibility())
+            }>
             Add to cart
           </Wrapper.ActionButton>
           <Wrapper.Like onClick={() => changeProduct("_", "like")}>

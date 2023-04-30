@@ -11,7 +11,7 @@ const SignIn = () => {
   const [userData, setUserData] = useState({});
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isError, setIsError] = useState();
+  const [isError, setIsError] = useState(false);
   const getUserDate = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
     setIsError(false);
@@ -55,43 +55,46 @@ const SignIn = () => {
         name={"firstName"}
         onChange={getUserDate}
         value={userData.firstName}
-        isError={isError}
+        error={isError ? "true" : undefined}
       />
       <Wrapper.Input
         placeholder={"Last Name"}
         name={"lastName"}
         onChange={getUserDate}
         value={userData.lastName}
-        isError={isError}
+        error={isError ? "true" : undefined}
       />
       <Wrapper.Input
         placeholder={"Username"}
         name={"userName"}
         onChange={getUserDate}
         value={userData.userName}
-        isError={isError}
+        error={isError ? "true" : undefined}
       />
 
       <Wrapper.Input
         placeholder={"Enter your email address"}
+        autoComplete={"username"}
         name={"email"}
         onChange={getUserDate}
         value={userData.email}
-        isError={isError}
+        error={isError ? "true" : undefined}
       />
       <Wrapper.InputPassword
         placeholder={"Password"}
+        autoComplete="current-password"
         name={"password"}
         onChange={getUserDate}
         value={userData.password}
-        isError={isError}
+        error={isError ? "true" : undefined}
       />
       <Wrapper.InputPassword
         placeholder={"Confirm Password"}
+        autoComplete="current-password"
         name={"confirmPassword"}
         value={confirmPassword}
         onChange={getConfirmPasswword}
-        isError={isError}
+        error={isError ? "true" : undefined}
         onKeyDown={(e) =>
           (e.key === "Enter" || e.key === 13) && addUserHandler()
         }

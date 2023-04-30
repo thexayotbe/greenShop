@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 405px;
+  .activeType {
+    border: 1px solid #46a358;
+  }
 `;
 Wrapper.Title = styled.h3`
   font-style: normal;
@@ -33,13 +36,21 @@ Wrapper.Coupon = styled.h3`
   display: flex;
   justify-content: end;
   gap: 10px;
-  margin: ${({ green }) => !green && "17px 0"};
+  margin: 17px 0;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
   text-align: right;
-  color: ${({ green }) => (green ? "#46A358" : "#3d3d3d")};
+  color: #3d3d3d;
+`;
+Wrapper.CouponSpan = styled.span`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: right;
+  color: #46a358;
 `;
 Wrapper.TotalSection = styled.div`
   display: flex;
@@ -73,6 +84,33 @@ Wrapper.Shipping = styled.p`
   margin-bottom: 17px;
 `;
 
-Wrapper.PaymentType = styled.div``;
-Wrapper.CheckBox = styled(Checkbox)``;
+Wrapper.PaymentType = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 11px;
+  margin: 15px 0;
+  gap: 10px;
+  width: 321px;
+  height: 45px;
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+`;
+Wrapper.CheckBox = styled.div`
+  width: 16px;
+  height: 16px;
+  border: 1px solid #46a358;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.5px;
+`;
+Wrapper.CheckBoxInner = styled.div`
+  width: 10px;
+  height: 10px;
+  background: #46a358;
+  border-radius: 50%;
+`;
+Wrapper.Img = styled.img``;
 export { Wrapper };

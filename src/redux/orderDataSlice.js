@@ -5,6 +5,19 @@ const orderData = createSlice({
   initialState: {
     orderData: [],
     productCount: [],
+    address: {
+      firstName: "",
+      lastName: "",
+      region: "",
+      town: "",
+      house: "",
+      appartment: "",
+      state: "",
+      zip: "",
+      email: "",
+      phoneNumber: "",
+    },
+    paymentType: "",
   },
   reducers: {
     setOrderedProducts(state, action) {
@@ -19,8 +32,11 @@ const orderData = createSlice({
       );
     },
     deleteProduct(state, action) {
+      state.productCount = state.productCount.filter(
+        (value, index) => index !== action.payload.countIndex
+      );
       state.orderData = state.orderData.filter(
-        (value) => value.id !== action.payload
+        (value) => value.id !== action.payload.type
       );
     },
     setProductCount(state, { payload }) {
@@ -33,13 +49,27 @@ const orderData = createSlice({
         ];
       else if (payload.type === "dec" && state.productCount[payload.order] > 1)
         state.productCount = [
-          ...state.orderData.map((value, index) =>
+          ...state.productCount.map((value, index) =>
             index === payload.order ? value - 1 : value
           ),
         ];
     },
+    setAddress(state, { payload }) {
+      state.address = {
+        ...state.address,
+        [payload.type]: payload.value,
+      };
+    },
+    setPaymentType(state, action) {
+      state.paymentType = action.payload;
+    },
   },
 });
 export default orderData.reducer;
-export const { setOrderedProducts, deleteProduct, setProductCount } =
-  orderData.actions;
+export const {
+  setOrderedProducts,
+  deleteProduct,
+  setProductCount,
+  setAddress,
+  setPaymentType,
+} = orderData.actions;

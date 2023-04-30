@@ -46,12 +46,14 @@ const LogIn = () => {
           openNotifications("success");
         } else {
           openNotifications("error");
+          setIsError(true);
         }
         setLoading(false);
       }, 3000);
     } else {
       setIsError(true);
       openNotifications("error");
+      setLoading(false);
     }
   };
   return (
@@ -60,14 +62,16 @@ const LogIn = () => {
       <Wrapper.Input
         placeholder={"Email or username"}
         name={"userName"}
+        autoComplete={"username"}
         onChange={getUserData}
-        isError={isError}
+        error={isError ? "true" : undefined}
       />
       <Wrapper.InputPassword
         placeholder={"Password"}
+        autoComplete="current-password"
         name={"password"}
         onChange={getUserData}
-        isError={isError}
+        error={isError ? "true" : undefined}
         onKeyDown={(e) => (e.key === "Enter" || e.key === 13) && checkHandler()}
       />
       <Wrapper.Forgot>Forgot Password?</Wrapper.Forgot>

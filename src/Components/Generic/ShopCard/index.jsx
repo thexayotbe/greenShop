@@ -7,12 +7,14 @@ import {
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { setOrderedProducts } from "../../../redux/orderDataSlice";
+import { switchAuthModalVisibility } from "../../../redux/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const ShopCard = (value) => {
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
   const { orderData } = useSelector((state) => state.orderData);
+  const { isAuthed } = useSelector((state) => state.userData);
   const dispatch = useDispatch();
   const search = (id) => {
     navigate(`/shop/${value.familyName}/${id}`);
@@ -29,7 +31,13 @@ const ShopCard = (value) => {
         <Wrapper.Img src={value.img} />
         <Wrapper.Buttons hover={hover}>
           <Wrapper.Button>
-            <ShoppingCartOutlined onClick={() => addToCard(value)} />
+            <ShoppingCartOutlined
+              onClick={() =>
+                isAuthed
+                  ? addToCard(value)
+                  : dispatch(switchAuthModalVisibility())
+              }
+            />
           </Wrapper.Button>
           <Wrapper.Button>
             <HeartOutlined />

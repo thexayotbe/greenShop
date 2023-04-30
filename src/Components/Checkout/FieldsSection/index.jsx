@@ -1,8 +1,14 @@
 import { Checkbox } from "antd";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Wrapper } from "./style";
+import { setAddress } from "../../../redux/orderDataSlice";
 
 const FieldsSection = () => {
+  const dispatch = useDispatch();
+  const getAddress = (e) =>
+    dispatch(setAddress({ type: e.target.name, value: e.target.value }));
+
   return (
     <Wrapper>
       <Wrapper.Title>Billing Address</Wrapper.Title>
@@ -11,37 +17,43 @@ const FieldsSection = () => {
           <Wrapper.Label>
             First Name <Wrapper.Required>*</Wrapper.Required>
           </Wrapper.Label>
-          <Wrapper.Input />
+          <Wrapper.Input name="firstName" onChange={getAddress} />
         </Wrapper.FormItem>
         <Wrapper.FormItem>
           <Wrapper.Label>
             Last Name <Wrapper.Required>*</Wrapper.Required>
           </Wrapper.Label>
-          <Wrapper.Input />
+          <Wrapper.Input name="lastName" onChange={getAddress} />
         </Wrapper.FormItem>
         <Wrapper.FormItem>
           <Wrapper.Label>
             Country / Region <Wrapper.Required>*</Wrapper.Required>
           </Wrapper.Label>
-          <Wrapper.Input />
+          <Wrapper.Input name="region" onChange={getAddress} />
         </Wrapper.FormItem>
         <Wrapper.FormItem>
           <Wrapper.Label>
             Town / City <Wrapper.Required>*</Wrapper.Required>
           </Wrapper.Label>
-          <Wrapper.Input />
+          <Wrapper.Input name="town" onChange={getAddress} />
         </Wrapper.FormItem>
         <Wrapper.FormItem>
           <Wrapper.Label>
             Street Address<Wrapper.Required>*</Wrapper.Required>
           </Wrapper.Label>
-          <Wrapper.Input placeholder={"House number and street name"} />
+          <Wrapper.Input
+            placeholder={"House number and street name"}
+            name="house"
+            onChange={getAddress}
+          />
         </Wrapper.FormItem>
         <Wrapper.FormItem>
           <Wrapper.Label>
             <Wrapper.Required> </Wrapper.Required>
           </Wrapper.Label>
           <Wrapper.Input
+            name="appartment"
+            onChange={getAddress}
             placeholder={"Appartment, suite, unit, etc. (optional)"}
           />
         </Wrapper.FormItem>
@@ -49,25 +61,25 @@ const FieldsSection = () => {
           <Wrapper.Label>
             State <Wrapper.Required>*</Wrapper.Required>
           </Wrapper.Label>
-          <Wrapper.Input />
+          <Wrapper.Input name="state" onChange={getAddress} />
         </Wrapper.FormItem>
         <Wrapper.FormItem>
           <Wrapper.Label>
             Zip <Wrapper.Required>*</Wrapper.Required>
           </Wrapper.Label>
-          <Wrapper.Input />
+          <Wrapper.Input name="zip" onChange={getAddress} />
         </Wrapper.FormItem>
         <Wrapper.FormItem>
           <Wrapper.Label>
             Email Address <Wrapper.Required>*</Wrapper.Required>
           </Wrapper.Label>
-          <Wrapper.Input />
+          <Wrapper.Input name="email" onChange={getAddress} />
         </Wrapper.FormItem>
         <Wrapper.FormItem>
           <Wrapper.Label>
             Phone Number <Wrapper.Required>*</Wrapper.Required>
           </Wrapper.Label>
-          <Wrapper.Input />
+          <Wrapper.Input name="phoneNumber" onChange={getAddress} />
         </Wrapper.FormItem>
       </Wrapper.Form>
       <Wrapper.AnotherShip>
