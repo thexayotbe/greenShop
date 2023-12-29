@@ -52,7 +52,7 @@ const Navbar = () => {
               <Wrapper.Icon src={shop} onClick={() => navigate("/shop-card")} />
             </Badge>
             {isAuthed ? (
-              <Wrapper.ProfileBtn>
+              <Wrapper.ProfileBtn onClick={() => navigate("/account")}>
                 <UserOutlined />
               </Wrapper.ProfileBtn>
             ) : (

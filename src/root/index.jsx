@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 import ShopCard from "../Components/ShopCardSection";
 import ShopComponent from "../Components/ShopComponent";
 import Checkout from "../Components/Checkout";
+import Account from "../Components/Account";
 const Root = () => {
   return (
     <>
@@ -23,6 +24,7 @@ const Root = () => {
           <Route path="/shop-card" element={<ShopCard />} />
           <Route path="/plant-care" element={<PlantCare />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/account" element={<Account />} />
         </Route>
       </Routes>
     </>
