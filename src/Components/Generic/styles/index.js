@@ -3,6 +3,12 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
+  @media (max-width: 968px) and (min-width: 768px) {
+    width: 90%;
+  }
+  @media (min-width: 767px) {
+    width: 90%;
+  }
 `;
 const LocationName = styled.h3`
   font-style: normal;
