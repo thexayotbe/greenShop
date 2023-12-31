@@ -1,51 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Wrapper } from "./style";
+import { AiOutlineMenu } from "react-icons/ai";
 import logo from "../../assets/icons/logoFull.svg";
 import shop from "../../assets/icons/shop.svg";
 import login from "../../assets/icons/login.svg";
 import search from "../../assets/icons/search.svg";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Container } from "../Generic/styles";
 import Footer from "../Footer";
-import { Badge } from "antd";
+import { Badge, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { switchAuthModalVisibility } from "../../redux/modalSlice";
 import { UserOutlined } from "@ant-design/icons";
+import Links from "./Links";
 const Navbar = () => {
-  const { isAuthed } = useSelector((state) => state.userData);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
+  const dispatch = useDispatch();
+  const [menuToggle, setMenuToggle] = useState(false);
+  const { isAuthed } = useSelector((state) => state.userData);
   const { orderData } = useSelector((state) => state.orderData);
   return (
     <Container>
       <Wrapper>
         <Wrapper.Navbar>
           <Wrapper.Logo src={logo} onClick={() => navigate("/")} />
-          <Wrapper.Links>
-            <Wrapper.Link
-              className={location.pathname === "/" ? "active" : ""}
-              onClick={() => navigate("/")}>
-              Home
-            </Wrapper.Link>
-            <Wrapper.Link
-              className={location.pathname.includes("shop") ? "active" : ""}
-              onClick={() => navigate("/shop")}>
-              Shop
-            </Wrapper.Link>
-            <Wrapper.Link
-              className={
-                location.pathname.includes("plant-care") ? "active" : ""
-              }
-              onClick={() => navigate("/plant-care")}>
-              Plant Care
-            </Wrapper.Link>
-            <Wrapper.Link
-              className={location.pathname.includes("blog") ? "active" : ""}
-              onClick={() => navigate("/blog")}>
-              Blogs
-            </Wrapper.Link>
-          </Wrapper.Links>
+          <Links />
           <Wrapper.Btns>
             <Wrapper.Icon src={search} />
             <Badge count={orderData.length}>
@@ -61,10 +40,27 @@ const Navbar = () => {
                 <Wrapper.Icon src={login} /> Login
               </Wrapper.LoginBtn>
             )}
+            <AiOutlineMenu
+              className="icon"
+              onClick={() => setMenuToggle(true)}
+            />
+            <Modal
+              open={menuToggle}
+              width={900}
+              footer={false}
+              title="Site Menu"
+              onCancel={() => setMenuToggle(false)}>
+              <Links mobile={true} />
+              <Wrapper.LoginBtn
+                mobile={true}
+                onClick={() => dispatch(switchAuthModalVisibility())}>
+                <Wrapper.Icon src={login} /> Login
+              </Wrapper.LoginBtn>
+            </Modal>
           </Wrapper.Btns>
         </Wrapper.Navbar>
         <Outlet />
-        <Footer />
+        {/* <Footer /> */}
       </Wrapper>
     </Container>
   );

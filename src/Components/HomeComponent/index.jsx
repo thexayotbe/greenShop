@@ -7,7 +7,6 @@ import Suggestion from "../Suggestion";
 const HomeComponent = () => {
   return (
     <div>
-      {/* <AuthSection /> */}
       <HomeCarousel />
       <ShopDashbord />
       <Suggestion />
