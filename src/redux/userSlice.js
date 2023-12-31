@@ -21,8 +21,11 @@ const userData = createSlice({
       state.isAuthed = true;
       state.currentUser = { ...data };
     },
+    logOut(state, action) {
+      state.isAuthed = false;
+    },
   },
 });
 
 export default userData.reducer;
-export const { addUser, checkUser } = userData.actions;
+export const { addUser, checkUser, logOut } = userData.actions;

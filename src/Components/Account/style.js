@@ -48,6 +48,7 @@ Wrapper.ItemText = styled.h3`
   line-height: 45px;
 `;
 Wrapper.LogOutBtn = styled.button`
+  cursor: pointer;
   width: 100%;
   height: 60px;
   display: flex;

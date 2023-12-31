@@ -10,9 +10,18 @@ import Location from "./Location";
 import Wishlist from "./Wishlist";
 import Products from "./Products";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../redux/userSlice";
+import { useNavigate } from "react-router-dom";
 const Account = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const sections = [<Details />, <Products />, <Location />, <Wishlist />];
   const [activeSection, setActivePage] = useState(0);
+  const logOutHandler = () => {
+    dispatch(logOut());
+    navigate("/");
+  };
   return (
     <Wrapper>
       <Wrapper.Menu>
@@ -43,7 +52,7 @@ const Account = () => {
             <Wrapper.ItemText>Wishlist</Wrapper.ItemText>
           </Wrapper.MenuItem>
         </Wrapper.MenuItems>
-        <Wrapper.LogOutBtn>
+        <Wrapper.LogOutBtn onClick={logOutHandler}>
           <Wrapper.ItemIcon src={logout} />
           Logout
         </Wrapper.LogOutBtn>
