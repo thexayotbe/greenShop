@@ -96,9 +96,7 @@ Wrapper.LoginBtn = styled.button`
   color: #fff;
   font-weight: 500;
   cursor: pointer;
-  @media (max-width: 767px) {
-    display: none;
-  }
+
   @media (max-width: 767px) {
     display: ${({ mobile }) => (mobile ? "flex" : "none")};
     width: 70%;
