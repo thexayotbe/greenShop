@@ -21,5 +21,16 @@ const Wrapper = styled.button`
     background-color: #ffffff;
     border: 1px solid #46a358;
   }
+  @media (max-width: 968px) and (min-width: 767px) {
+    width: ${({ widthBtn }) => (widthBtn ? "120px" : "140px")};
+    height: ${({ heightBtn }) => (heightBtn ? "30px" : "35px")};
+    margin: ${({ margin }) => margin};
+  }
+  @media (max-width: 767px) {
+    width: ${({ widthBtn }) => (widthBtn ? "100px" : "140px")};
+    height: ${({ heightBtn }) => (heightBtn ? "25px" : "35px")};
+    margin: 0 0;
+    font-size: 9px;
+  }
 `;
 export { Wrapper };

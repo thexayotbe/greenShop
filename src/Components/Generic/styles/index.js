@@ -6,8 +6,8 @@ const Container = styled.div`
   @media (max-width: 968px) and (min-width: 768px) {
     width: 90%;
   }
-  @media (min-width: 767px) {
-    width: 90%;
+  @media (max-width: 767px) {
+    width: 98%;
   }
 `;
 const LocationName = styled.h3`

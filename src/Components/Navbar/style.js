@@ -32,7 +32,11 @@ Wrapper.Navbar = styled.div`
     margin: 0 auto;
   }
 `;
-Wrapper.Logo = styled.img``;
+Wrapper.Logo = styled.img`
+  @media (max-width: 767px) {
+    width: 150px;
+  }
+`;
 Wrapper.Links = styled.ul`
   display: flex;
   align-items: center;
@@ -49,7 +53,9 @@ Wrapper.Links = styled.ul`
       padding-left: 5px;
     }
   }
-
+  @media (max-width: 968px) and (min-width: 768px) {
+    gap: 20px;
+  }
   @media (max-width: 767px) {
     display: ${({ mobile }) => (mobile ? "flex" : "none")};
     flex-direction: column;
@@ -69,6 +75,9 @@ Wrapper.Link = styled.li`
   align-items: center;
   :hover {
     color: #46a358;
+  }
+  @media (max-width: 968px) and (min-width: 768px) {
+    font-size: 14px;
   }
 `;
 Wrapper.Btns = styled.div`
@@ -99,8 +108,9 @@ Wrapper.LoginBtn = styled.button`
 
   @media (max-width: 767px) {
     display: ${({ mobile }) => (mobile ? "flex" : "none")};
-    width: 70%;
+    width: 50%;
     margin: 10px auto;
+    gap: 5px;
   }
 `;
 Wrapper.ProfileBtn = styled.button`
