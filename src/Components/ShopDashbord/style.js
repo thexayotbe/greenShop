@@ -28,6 +28,12 @@ Wrapper.FilterSide = styled.div`
   height: 830px;
   background-color: #fbfbfb;
   padding: 14px 24px 0 18px;
+  @media (max-width: 968px) and (min-width: 768px) {
+    display: none;
+  }
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 Wrapper.FilterGroup = styled.div`
   margin-bottom: 36px;

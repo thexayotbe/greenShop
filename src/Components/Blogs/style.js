@@ -33,14 +33,15 @@ Wrapper.Blogs = styled.div`
   display: flex;
   margin-bottom: 35px;
   gap: 40px;
-  flex-wrap: wrap;
   justify-content: center;
   @media (max-width: 968px) and (min-width: 768px) {
+    flex-wrap: wrap;
   }
   @media (max-width: 767px) {
     flex-direction: column;
     gap: 30px;
     align-items: center;
+    flex-wrap: wrap;
   }
 `;
 export { Wrapper };

@@ -14,6 +14,12 @@ const Wrapper = styled.div`
   height: 340px;
   position: relative;
   cursor: pointer;
+  @media (max-width: 968px) and (min-width: 768px) {
+    width: 220px;
+  }
+  @media (max-width: 767px) {
+    width: 160px;
+  }
 `;
 Wrapper.ImgSide = styled.div`
   width: 258px;
@@ -21,11 +27,23 @@ Wrapper.ImgSide = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 968px) and (min-width: 768px) {
+    width: 240px;
+  }
+  @media (max-width: 767px) {
+    width: 200px;
+  }
 `;
 Wrapper.Img = styled.img`
   width: 250px;
   height: 250px;
   background-color: #fff;
+  @media (max-width: 968px) and (min-width: 768px) {
+    width: 240px;
+  }
+  @media (max-width: 767px) {
+    width: 160px;
+  }
 `;
 Wrapper.Buttons = styled.div`
   width: 150px;

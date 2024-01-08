@@ -8,7 +8,7 @@ const HomeComponent = () => {
   return (
     <div>
       <HomeCarousel />
-      {/* <ShopDashbord /> */}
+      <ShopDashbord />
       <Suggestion />
       <Blogs />
     </div>
