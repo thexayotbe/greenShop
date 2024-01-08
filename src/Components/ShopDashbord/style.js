@@ -109,6 +109,12 @@ Wrapper.ProductsSide = styled.div`
 Wrapper.SaleBannerImg = styled.img`
   margin-left: -45px;
   margin-top: -35px;
+  @media (max-width: 968px) and (min-width: 768px) {
+    width: 240px;
+  }
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 Wrapper.ProductsSort = styled.div`
   display: flex;
@@ -119,6 +125,17 @@ Wrapper.SortTypes = styled.span`
   display: flex;
   gap: 37px;
 `;
-Wrapper.SortDefaultType = styled.div``;
+Wrapper.SortDefaultType = styled.div`
+  @media (max-width: 767px) {
+    display: none;
+  }
+`;
+Wrapper.Icon = styled.img`
+  display: none;
+  cursor: pointer;
+  @media (max-width: 767px) {
+    display: block;
+  }
+`;
 Wrapper.Label = styled.span``;
 export { Wrapper };
