@@ -28,11 +28,10 @@ Wrapper.FilterSide = styled.div`
   height: 830px;
   background-color: #fbfbfb;
   padding: 14px 24px 0 18px;
-  @media (max-width: 968px) and (min-width: 768px) {
-    display: none;
-  }
-  @media (max-width: 767px) {
-    display: none;
+  @media (max-width: 968px) {
+    display: ${({ responsible }) => (responsible ? "block" : "none")};
+    height: auto;
+    width: auto;
   }
 `;
 Wrapper.FilterGroup = styled.div`
@@ -40,6 +39,10 @@ Wrapper.FilterGroup = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 30px;
+  @media (max-width: 968px) {
+    display: ${({ noRes }) => (noRes ? "none" : "flex")};
+    width: 100%;
+  }
 `;
 Wrapper.FilterTitle = styled.h3`
   font-style: normal;
@@ -99,6 +102,9 @@ Wrapper.Slider = styled(Slider)`
   .ant-slider-track {
     border: 4px solid #46a358;
   }
+  @media (max-width: 968px) {
+    width: 100%;
+  }
 `;
 Wrapper.NameAmount = styled.span``;
 Wrapper.ProductsSide = styled.div`
@@ -109,10 +115,7 @@ Wrapper.ProductsSide = styled.div`
 Wrapper.SaleBannerImg = styled.img`
   margin-left: -45px;
   margin-top: -35px;
-  @media (max-width: 968px) and (min-width: 768px) {
-    width: 240px;
-  }
-  @media (max-width: 767px) {
+  @media (max-width: 968px) {
     display: none;
   }
 `;
@@ -133,7 +136,7 @@ Wrapper.SortDefaultType = styled.div`
 Wrapper.Icon = styled.img`
   display: none;
   cursor: pointer;
-  @media (max-width: 767px) {
+  @media (max-width: 968px) {
     display: block;
   }
 `;

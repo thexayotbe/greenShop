@@ -9,9 +9,10 @@ const Filter = ({
   data,
   filterData,
   filterRange,
+  responsible,
 }) => {
   return (
-    <Wrapper.FilterSide>
+    <Wrapper.FilterSide responsible={responsible}>
       <Wrapper.FilterGroup>
         <Wrapper.FilterTitle>Categories</Wrapper.FilterTitle>
         {familyNames.map((familyName, index) => {
@@ -36,7 +37,7 @@ const Filter = ({
           color="#46A358"
           defaultValue={[0, 1000]}
           style={{ color: "#46A358" }}
-          onChange={(e) => selectHandler(e, "range")}
+          onChange={(e) => selectHandler(e, "range", false)}
         />
         <Wrapper.Price noSpace>
           Price:{" "}
@@ -52,7 +53,7 @@ const Filter = ({
           Filter
         </Button>
       </Wrapper.FilterGroup>
-      <Wrapper.FilterGroup>
+      <Wrapper.FilterGroup noRes={true}>
         <Wrapper.FilterTitle>Size</Wrapper.FilterTitle>
         <Wrapper.FilterName onClick={() => selectHandler("Small", "size")}>
           {" "}

@@ -19,14 +19,17 @@ const ShopDashbord = () => {
   const familyNames = Object.keys(data);
   const { filterData, sortedData } = useSelector((state) => state.filterData);
   const [stateData, setStateData] = useState([...sortedData]);
+  const [modalhandler, setModalHandler] = useState(false);
   const dropDownChange = (e) => {
     dispatch(sortByPrice(e));
   };
-  const selectHandler = (value, type) => {
+  const selectHandler = (value, type, addFunc) => {
     dispatch(setSelectedFamily({ type: type, value: value }));
+    if (addFunc) setModalHandler(false);
   };
   const filterRange = () => {
     dispatch(setRange(filterData.range));
+    setModalHandler(false);
   };
   const sortByType = (type) => {
     selectHandler(type, "sortType");
@@ -83,14 +86,18 @@ const ShopDashbord = () => {
               </Select>
             </Wrapper.TypeName>
           </Wrapper.SortDefaultType>
-          <Wrapper.Icon src={filter} />
-          <Modal open={true}>
+          <Wrapper.Icon src={filter} onClick={() => setModalHandler(true)} />
+          <Modal
+            open={modalhandler}
+            footer={false}
+            onCancel={() => selectHandler(false)}>
             <Filter
               familyNames={familyNames}
               selectHandler={selectHandler}
               data={data}
               filterData={filterData}
               filterRange={filterRange}
+              responsible={true}
             />
           </Modal>
         </Wrapper.ProductsSort>
