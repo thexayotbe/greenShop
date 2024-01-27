@@ -60,7 +60,7 @@ const Navbar = () => {
           </Wrapper.Btns>
         </Wrapper.Navbar>
         <Outlet />
-        {/* <Footer /> */}
+        <Footer />
       </Wrapper>
     </Container>
   );

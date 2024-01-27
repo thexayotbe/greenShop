@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
     width: 90%;
   }
   @media (max-width: 767px) {

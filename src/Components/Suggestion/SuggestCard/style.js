@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   height: 250px;
   display: flex;
   align-items: center;
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
     width: 100%;
   }
   @media (max-width: 767px) {
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   }
 `;
 Wrapper.Img = styled.img`
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
     width: 50%;
   }
   @media (max-width: 767px) {
@@ -36,7 +36,7 @@ Wrapper.Title = styled.h3`
   text-align: right;
   text-transform: uppercase;
   color: #3d3d3d;
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
     width: auto;
   }
   @media (max-width: 767px) {
@@ -51,7 +51,7 @@ Wrapper.Description = styled.p`
   text-align: right;
   color: #727272;
   margin-top: 18px;
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
   }
   @media (max-width: 767px) {
     width: 80%;

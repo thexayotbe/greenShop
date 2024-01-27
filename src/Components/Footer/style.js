@@ -8,6 +8,15 @@ Wrapper.FooterAbout = styled.div`
   display: flex;
   background-color: #fbfbfb;
   padding-top: 31px;
+  @media (max-width: 1024px) and (min-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 30px;
+  }
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
+    row-gap: 30px;
+  }
 `;
 Wrapper.Title = styled.h3`
   font-style: normal;
@@ -25,15 +34,32 @@ Wrapper.Description = styled.p`
 `;
 Wrapper.JoinNews = styled.div`
   width: 420px;
+  @media (max-width: 1024px) and (min-width: 768px) {
+    width: 100%;
+  }
+  @media (max-width: 767px) {
+    width: 90%;
+    margin: 0 auto;
+  }
 `;
-Wrapper.InputContainer = styled.div``;
+Wrapper.InputContainer = styled.div`
+  @media (max-width: 767px) {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+`;
 Wrapper.Input = styled(Input)`
   margin: 18px 0;
   width: 304px;
   height: 40px;
   background: #ffffff;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.06);
-  border-radius: 6px 0px 0px 6px; ;
+  border-radius: 6px 0px 0px 6px;
+  @media (max-width: 1024px) and (min-width: 768px) {
+    width: 80%;
+  }
 `;
 Wrapper.Button = styled.button`
   width: 85px;
@@ -62,6 +88,20 @@ Wrapper.FooterContact = styled.div`
   padding-left: 23px;
   column-gap: 60px;
   margin-top: 32px;
+  @media (max-width: 1024px) and (min-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 20px;
+    height: 100px;
+    padding: 10px 0;
+  }
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px 0;
+  }
 `;
 Wrapper.ContactItem = styled.div`
   display: flex;
@@ -85,9 +125,23 @@ Wrapper.Footer = styled.div`
   background-color: #fbfbfb;
   padding-right: 130px;
   padding-left: 23px;
+  @media (max-width: 1024px) and (min-width: 768px) {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
+    height: auto;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
 `;
 Wrapper.FooterItem = styled.div`
   width: 200px;
+  @media (max-width: 767px) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 Wrapper.FooterTitle = styled.h3`
   font-style: normal;
@@ -113,6 +167,9 @@ Wrapper.Icons = styled.div`
   display: flex;
   margin-top: 20px;
   gap: 10px;
+  @media (max-width: 767px) {
+    justify-content: center;
+  }
 `;
 Wrapper.IconImg = styled.img`
   width: 30px;

@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   .ant-badge .ant-badge-count {
     background: #46a358;
   }
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
     width: 100%;
   }
 `;
@@ -53,7 +53,7 @@ Wrapper.Links = styled.ul`
       padding-left: 5px;
     }
   }
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
     gap: 20px;
   }
   @media (max-width: 767px) {
@@ -76,7 +76,7 @@ Wrapper.Link = styled.li`
   :hover {
     color: #46a358;
   }
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
     font-size: 14px;
   }
 `;

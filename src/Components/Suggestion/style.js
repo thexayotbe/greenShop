@@ -4,7 +4,7 @@ const Wrapper = styled.div`
   margin-top: 94px;
   display: flex;
   width: 100%;
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
     gap: 20px;
   }
   @media (max-width: 767px) {

@@ -20,7 +20,7 @@ const Footer = () => {
       <Wrapper.FooterAbout>
         <FooterCard img={footer1} title={"Garden Care"} />
         <FooterCard img={footer2} title={"Plant Renovation"} />
-        <FooterCard img={footer3} title={"Watering Graden"} />
+        <FooterCard img={footer3} title={"Watering Graden"} nobr={true} />
         <Wrapper.JoinNews>
           <Wrapper.Title>Would you like to join newsletters?</Wrapper.Title>
           <Wrapper.InputContainer>

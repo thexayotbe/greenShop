@@ -3,8 +3,9 @@ import styled from "styled-components";
 const Wrapper = styled.div``;
 Wrapper.ContainerProduct = styled.div`
   height: 1200px;
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
     height: auto;
+    width: 100%;
   }
   @media (max-width: 767px) {
     font-size: 15px;
@@ -14,8 +15,8 @@ Wrapper.ContainerProduct = styled.div`
 Wrapper.Products = styled.div`
   display: flex;
   flex-wrap: wrap;
-  column-gap: 32px;
-  gap: 20px;
+  row-gap: 30px;
+  justify-content: space-between;
   max-height: 1200px;
   height: auto;
 `;
@@ -23,7 +24,7 @@ Wrapper.Pagination = styled.div`
   float: right;
   margin-top: 90px;
   margin-right: 30px;
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
     floar: center;
   }
   @media (max-width: 767px) {

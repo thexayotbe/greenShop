@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 Wrapper.TextSide = styled.div`
   flex: 1;
   padding: 68px 40px;
-  @media (max-width: 968px) and (min-width: 767px) {
+  @media (max-width: 1024px) and (min-width: 767px) {
     font-size: 25px;
     line-height: 30px;
   }
@@ -30,7 +30,7 @@ Wrapper.ImgSide = styled.div`
   flex: 1;
 `;
 Wrapper.Img = styled.img`
-  @media (max-width: 968px) and (min-width: 767px) {
+  @media (max-width: 1024px) and (min-width: 767px) {
     width: 100%;
   }
   @media (max-width: 767px) {
@@ -45,7 +45,7 @@ Wrapper.Title = styled.h3`
   margin: 7px 0;
   text-transform: uppercase;
   color: #3d3d3d;
-  @media (max-width: 968px) and (min-width: 767px) {
+  @media (max-width: 1024px) and (min-width: 767px) {
     font-size: 25px;
     line-height: 30px;
   }
@@ -64,7 +64,7 @@ Wrapper.Description = styled.div`
   line-height: 24px;
   color: ${({ isTop }) => (isTop ? "#3D3D3D" : "#727272")};
   margin-bottom: ${({ isTop }) => (isTop ? "" : "44px")};
-  @media (max-width: 968px) and (min-width: 767px) {
+  @media (max-width: 1024px) and (min-width: 767px) {
     font-size: 12px;
     line-height: 20px;
   }

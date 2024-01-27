@@ -3,7 +3,8 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   margin-top: 138px;
   height: 480px;
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
+    height: auto;
   }
   @media (max-width: 767px) {
     height: 1600px;
@@ -34,7 +35,7 @@ Wrapper.Blogs = styled.div`
   margin-bottom: 35px;
   gap: 40px;
   justify-content: center;
-  @media (max-width: 968px) and (min-width: 768px) {
+  @media (max-width: 1024px) and (min-width: 768px) {
     flex-wrap: wrap;
   }
   @media (max-width: 767px) {

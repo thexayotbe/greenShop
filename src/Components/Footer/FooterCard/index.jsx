@@ -1,9 +1,9 @@
 import React from "react";
 import { Wrapper } from "./style";
 import circle from "../../../assets/icons/circle.svg";
-const FooterCard = ({ img, title }) => {
+const FooterCard = ({ img, title, nobr }) => {
   return (
-    <Wrapper>
+    <Wrapper nobr={nobr}>
       <Wrapper.ImgSection>
         <Wrapper.Img src={img} />
         <Wrapper.Shape src={circle} />
