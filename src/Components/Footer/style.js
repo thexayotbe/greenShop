@@ -184,7 +184,6 @@ Wrapper.Rights = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-top: 1px solid rgba(70, 163, 88, 0.2);
 `;
 Wrapper.RightsText = styled.div`
