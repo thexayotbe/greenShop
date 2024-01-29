@@ -191,6 +191,7 @@ Wrapper.RightsText = styled.div`
   font-weight: 400;
   font-size: 14px;
   line-height: 30px;
+
   color: #3d3d3d;
 `;
 export { Wrapper };
