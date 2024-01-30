@@ -133,6 +133,7 @@ Wrapper.Footer = styled.div`
     flex-wrap: wrap;
     height: auto;
     padding-right: 0px;
+
     padding-left: 0px;
   }
 `;
@@ -191,7 +192,6 @@ Wrapper.RightsText = styled.div`
   font-weight: 400;
   font-size: 14px;
   line-height: 30px;
-
   color: #3d3d3d;
 `;
 export { Wrapper };
