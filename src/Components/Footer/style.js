@@ -133,6 +133,7 @@ Wrapper.Footer = styled.div`
     flex-wrap: wrap;
     height: auto;
     padding-right: 0px;
+
     padding-left: 0px;
   }
 `;
